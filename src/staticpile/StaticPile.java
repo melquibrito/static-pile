@@ -1,11 +1,11 @@
 package staticpile;
 
-public class StaticList<T extends Comparable> {
+public class StaticPile<T extends Comparable> {
 
     private int beginning = 0, end = 0, size = 0;
     private final Object data[];
 
-    public StaticList(int size) {
+    public StaticPile(int size) {
         data = new Object[size];
     }
 
