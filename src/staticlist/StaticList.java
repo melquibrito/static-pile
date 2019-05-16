@@ -1,14 +1,12 @@
 package staticlist;
 
 public class StaticList<T extends Comparable> {
-
-    private int beginning = 0;
-    private int end = 0;
-    private int size = 0;
+    
+    private int beginning = 0, end = 0, size = 0;
     private final Object data[];
 
-    public StaticList(int tamanhoFila) {
-        data = new Object[tamanhoFila];
+    public StaticList(int size) {
+        data = new Object[size];
     }
 
     public boolean isFull() {
@@ -19,11 +17,11 @@ public class StaticList<T extends Comparable> {
         return size == 0;
     }
 
-    public boolean add(T t) {
+    public boolean add(T object) {
         if (isFull()) {
             return false;
         }
-        data[end] = t;
+        data[end] = object;
         end = (end + 1) % data.length;
         size++;
         return true;
@@ -40,12 +38,11 @@ public class StaticList<T extends Comparable> {
     }
 
     public T get() {
-        if (isEmpty()) {
-            return null;
+        if (!isEmpty()) {
+            T t = (T) data[beginning];
+            return t;
         }
-        T t = (T) data[beginning];
-        return t;
+        return null;
     }
-
+    
 }
-
