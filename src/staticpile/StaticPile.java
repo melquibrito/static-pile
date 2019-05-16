@@ -8,7 +8,7 @@ public class StaticPile<T extends Comparable> {
     public StaticPile(int size) {
         data = new Object[size];
     }
-
+    
     public boolean isFull() {
         return size == data.length;
     }
@@ -21,6 +21,7 @@ public class StaticPile<T extends Comparable> {
         if (!isFull()) {
             data[end] = object;
             end = (end + 1) % data.length;
+            System.out.println(end);
             size++;
             return true;
         }
@@ -43,6 +44,25 @@ public class StaticPile<T extends Comparable> {
             return t;
         }
         return null;
+    }
+    
+    public int size() {
+        return size;
+    }
+    
+    @Override
+    public String toString() {
+        String list = "[]";
+        if (!isEmpty()) {
+            list = "[" + data[0];
+            if (this.size() > 1) {
+                for (int i = 1; i < this.size(); i++) {
+                    list = list + ", " + data[i];
+                }
+            }
+            list = list + "]";
+        }
+        return list;
     }
 
 }
