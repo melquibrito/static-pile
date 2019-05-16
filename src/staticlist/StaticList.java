@@ -1,7 +1,7 @@
 package staticlist;
 
 public class StaticList<T extends Comparable> {
-    
+
     private int beginning = 0, end = 0, size = 0;
     private final Object data[];
 
@@ -18,23 +18,23 @@ public class StaticList<T extends Comparable> {
     }
 
     public boolean add(T object) {
-        if (isFull()) {
-            return false;
+        if (!isFull()) {
+            data[end] = object;
+            end = (end + 1) % data.length;
+            size++;
+            return true;
         }
-        data[end] = object;
-        end = (end + 1) % data.length;
-        size++;
-        return true;
+        return false;
     }
 
     public T remove() {
-        if (isEmpty()) {
-            return null;
+        if (!isEmpty()) {
+            T t = (T) data[beginning];
+            beginning = (beginning + 1) % data.length;
+            size--;
+            return t;
         }
-        T t = (T) data[beginning];
-        beginning = (beginning + 1) % data.length;
-        size--;
-        return t;
+        return null;
     }
 
     public T get() {
@@ -44,5 +44,5 @@ public class StaticList<T extends Comparable> {
         }
         return null;
     }
-    
+
 }
