@@ -1,4 +1,4 @@
-package staticlist;
+package staticpile;
 
 public class MainClass {
 
