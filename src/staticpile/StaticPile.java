@@ -21,7 +21,6 @@ public class StaticPile<T extends Comparable> {
         if (!isFull()) {
             data[end] = object;
             end = (end + 1) % data.length;
-            System.out.println(end);
             size++;
             return true;
         }
